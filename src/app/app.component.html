@@ -8,16 +8,9 @@
   <a routerLink="/fourth">Go to Fourth</a>>
 </div> -->
 
-<button (click)="goToRoute()">Go to Fourth</button>
+<button (click)="modifyFormControl()">Modify Form Control</button>
 
+<input type="text" [formControl]="testProp" name="testProp" />
 
-<div class="split left">
-  <div class="centered">
-    <router-outlet></router-outlet>
-  </div>
-</div>
-
-<div class="split right">
-  <div class="centered">
-  </div>
-</div>
+{{testProp.value}}
+<router-outlet></router-outlet>

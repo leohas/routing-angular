@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +9,25 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-routing';
+  testProp = new FormControl('')
 
-  constructor(private router: Router) {
+  // Using Form Group
+  profileForm = new FormGroup({
+    firstName: new FormControl('', Validators.min(2)),
+    lastName: new FormControl('')
+  })
+
+  /* Using FormBuilder
+  profileTwo = this.fb.group({
+    firstName: [''],
+    lastName: [''],
+  })
+*/
+  constructor(private router: Router, private fb: FormBuilder) {
   }
 
-  goToRoute(route: string = '/fourth'): void {
-    this.router.navigateByUrl(route).then(() => {
-      console.log(this.router.url)
-    })
+  modifyFormControl(): void {
+    this.testProp.setValue('')
   }
 
 }
